@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="assets/css/style.css" rel="stylesheet" />
+  <title>CONTATO</title>
+</head>
+
+<body>
+  <header>
+    <nav class="nav-bar">
+      <div class="logo">
+        <img src="assets/img/LOGOSITE.svg" alt="logo">
+      </div>
+      <div class="nav-list">
+        <ul>
+          <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+          <li class="nav-item"><a href="elenco.html" class="nav-link">Elenco</a></li>
+          <li class="nav-item"><a href="epespeciais.html" class="nav-link">Episódio Especiais</a></li>
+          <li class="nav-item"><a href="curiosidades.html" class="nav-link">Temporadas</a></li>
+          <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+        </ul>
+      </div>
+      <div class="responsive-menu-icon">
+        <button onclick="menuShow()"> <img class="icon" src="assets/img/menuburguer.svg" alt=""></button>
+      </div>
+    </nav>
+
+    <div class="responsive-menu">
+      <ul>
+        <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+        <li class="nav-item"><a href="elenco.html" class="nav-link">Elenco</a></li>
+        <li class="nav-item"><a href="epespeciais.html" class="nav-link">Episódio Especiais</a></li>
+        <li class="nav-item"><a href="curiosidades.html" class="nav-link">Curiosidades</a></li>
+        <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <script src="assets/js/script.js"></script>
+  <!-- Cola aqui Cainha-->
+
+  <div class="container">
+    <div class="elemento">
+      <h1> Entre em contato </h1>
+      <form action="https://formsubmit.co/cainhalima2004@gmail.com" method="POST" class="form">
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name" required />
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" required />
+        <label for="message">Mensagem</label>
+        <textarea name="message" id="message" required></textarea>
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="http://127.0.0.1:5500/Friends/obrigado.html" />
+        <div class="button-container">
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!--RODAPÉ-->
+  <article class="rodapé">
+    <footer>
+      <p>&copy; 2023 - Todos os direitos reservados</p>
+    </footer>
+  </article>
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="assets/css/style.css" rel="stylesheet" />
+  <title>TEMPORADAS</title>
+</head>
+
+<body>
+  <header>
+    <nav class="nav-bar">
+      <div class="logo">
+        <img src="assets/img/LOGOSITE.svg" alt="logo">
+      </div>
+      <div class="nav-list">
+        <ul>
+          <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+          <li class="nav-item"><a href="elenco.html" class="nav-link">Elenco</a></li>
+          <li class="nav-item"><a href="epespeciais.html" class="nav-link">Episódio Especiais</a></li>
+          <li class="nav-item"><a href="curiosidades.html" class="nav-link">Temporadas</a></li>
+          <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+        </ul>
+      </div>
+      <div class="responsive-menu-icon">
+        <button onclick="menuShow()"> <img class="icon" src="assets/img/menuburguer.svg" alt=""></button>
+      </div>
+    </nav>
+
+    <div class="responsive-menu">
+      <ul>
+        <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+        <li class="nav-item"><a href="elenco.html" class="nav-link">Elenco</a></li>
+        <li class="nav-item"><a href="epespeciais.html" class="nav-link">Episódio Especiais</a></li>
+        <li class="nav-item"><a href="curiosidades.html" class="nav-link">Curiosidades</a></li>
+        <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+      </ul>
+    </div>
+
+  </header>
+  <script src="assets/js/script.js"></script>
+  <h1>TEMPORADAS</h1>
+  <div class="items"></div>
+
+
+  <!-- AXIOS-->
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script>
+    
+    const apiKey =
+      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYTFlNTUwNGE5ZDYxYjVmMjk1YzFmYzZkNGQ0NjEyNCIsInN1YiI6IjY1Njc4YTljYThiMmNhMDE0ZDUxZTE2YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UyfAH1j55YWM7u1PlW8D7QZZDBNSr8vxwNHaCQ0r6pY";
+    const baseUrl = "https://api.themoviedb.org/3";
+    const seriesName = "Friends";
+    const searchEndpoint = `/tv/1668?append_to_response=seasons&language=pt-BR`;
+
+    const config = {
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYTFlNTUwNGE5ZDYxYjVmMjk1YzFmYzZkNGQ0NjEyNCIsInN1YiI6IjY1Njc4YTljYThiMmNhMDE0ZDUxZTE2YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UyfAH1j55YWM7u1PlW8D7QZZDBNSr8vxwNHaCQ0r6pY`,
+      },
+    };
+
+    const bodyParams = {
+      api_key: apiKey,
+      query: seriesName,
+    };
+
+    axios
+      .get(`${baseUrl}${searchEndpoint}`, config)
+      .then((response) => {
+        console.log("Dados da API:", response.data.seasons);
+
+        const seasons = response.data.seasons;
+        const items = seasons.map((season) => {
+          return `<div class="container-info">
+            <div class="conteudo">
+              <p class="card-body">
+                <h2>${season.name}</h2>
+                <p>${season.overview}</p>
+              </p>
+            </div>
+            <div class="card">
+              <img src="https://image.tmdb.org/t/p/w500${season.poster_path}" alt="poster" />
+            </div>
+          </div>`;            
+        });
+        document.querySelector(".items").innerHTML = items.join("");
+      })
+      .catch((error) => {
+        console.error("Erro ao fazer a solicitação à API:", error);
+      });
+  </script>
+
+  <!--RODAPÉ-->
+  <article class="rodapé">
+    <footer>
+      <p>&copy; 2023 - Todos os direitos reservados</p>
+    </footer>
+  </article>
+
+</body>
+
+</html>
